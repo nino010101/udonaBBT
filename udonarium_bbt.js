@@ -23,12 +23,6 @@ javascript:void((function(f){
         console.error(err);
       });
   })(function(undefined){
-    var scr1 = document.createElement('script');
-    scr1.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js';
-    document.body.appendChild(scr1);
-    var scr2 = document.createElement('script');
-    scr2.src = 'https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js';
-    document.body.appendChild(scr2);
 
     /* 実処理部分 */
     var source = window.document;
