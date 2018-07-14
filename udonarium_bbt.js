@@ -159,13 +159,13 @@ javascript:void((function(f){
     /* プライマリブラッド */
     elem = document.createElement('data');
     elem.setAttribute('name', 'ブラッド[P]');
-    elem.innerText = getById(source, 'base.bloods.primary.blood');
+    elem.innerText = getById(source, 'base.bloods.primary.blood')+'['+getById(source, 'base.bloods.primary.root')+']';
     baseData.appendChild(elem);
 
     /* セカンダリブラッド */
     elem = document.createElement('data');
     elem.setAttribute('name', 'ブラッド[S]');
-    elem.innerText = getById(source, 'base.bloods.secondary.blood');
+    elem.innerText = getById(source, 'base.bloods.secondary.blood')+'['+getById(source, 'base.bloods.secondary.root')+']';
     baseData.appendChild(elem);
 
     /* 基本能力値 */
@@ -293,7 +293,7 @@ javascript:void((function(f){
     }
 
     /* 防具 */
-    var armourList = window.document.getElementById('armours').children[1].children;
+    var armourList = window.document.getElementById('armours').children[2].children;
     for(var i=0; i<armourList.length; i++){
         /* 名前欄が空だったらスキップ */
         if(armourList[i].children[0].textContent == '')continue;
@@ -357,7 +357,7 @@ javascript:void((function(f){
 
     /* チャパレ */
     chatPalette = document.createElement('chat-palette');
-    chatPalette.setAttribute('dicebot', 'Arianrhod');
+    chatPalette.setAttribute('dicebot', 'BeastBindTrinity');
 
     /* チャパレ内容 */
     cp = '';
@@ -381,6 +381,14 @@ javascript:void((function(f){
     cp += 'C([ダメージ値]-[アーマー値]) [ダメージ計算]\n';
     cp += '\n';
     cp += '//武器メモ欄\n';
+    for(var i=0; i<weaponList.length; i++){
+        /* アーツ名の欄が空だったらスキップ */
+        if(weaponList[i].children[0].textContent == '')continue;
+        wpText = '['+weaponList[i].children[0].textContent+'] ';
+        wpText += weaponList[i].children[5].textContent+'\n';
+        cp += wpText;
+    }
+
     cp += '\n';
     cp += '//アーツメモ欄\n';
     /* アーツコピペ */
