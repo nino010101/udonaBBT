@@ -50,6 +50,16 @@ javascript:void((function(f){
         }
     };
 
+    function getByIdName(obj,id){
+        var elem = obj.getElementById(id);
+        if(elem!==null){
+            var elemId = elem.value;
+            return elem[elemId].textContent;
+        } else {
+            return '';
+        }
+    };
+
     alert('キャラコマデータを出力します');
 
     /* xmlの生成 */
@@ -159,13 +169,13 @@ javascript:void((function(f){
     /* プライマリブラッド */
     elem = document.createElement('data');
     elem.setAttribute('name', 'ブラッド[P]');
-    elem.innerText = getById(source, 'base.bloods.primary.blood')+'['+getById(source, 'base.bloods.primary.root')+']';
+    elem.innerText = getById(source, 'base.bloods.primary.blood')+'['+getByIdName(source, 'base.bloods.primary.root')+']';
     baseData.appendChild(elem);
 
     /* セカンダリブラッド */
     elem = document.createElement('data');
     elem.setAttribute('name', 'ブラッド[S]');
-    elem.innerText = getById(source, 'base.bloods.secondary.blood')+'['+getById(source, 'base.bloods.secondary.root')+']';
+    elem.innerText = getById(source, 'base.bloods.secondary.blood')+'['+getByIdName(source, 'base.bloods.secondary.root')+']';
     baseData.appendChild(elem);
 
     /* 基本能力値 */
@@ -388,7 +398,6 @@ javascript:void((function(f){
         wpText += weaponList[i].children[5].textContent+'\n';
         cp += wpText;
     }
-
     cp += '\n';
     cp += '//アーツメモ欄\n';
     /* アーツコピペ */
